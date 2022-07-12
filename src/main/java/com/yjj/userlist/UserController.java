@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,12 +43,27 @@ public class UserController {
 	public UserDto userById(@PathVariable int id) {
 		
 		UserDto userBySearch = dao.userById(id);
-		System.out.println("회원 정보 가져오기 성공 성공");
+		System.out.println("회원 정보 가져오기 성공");
 		System.out.println(dao.userById(id));
 		
 		return userBySearch;
 	}
 	
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable int id) {
+		dao.deleteUser(id);
+		System.out.println("회원 삭제 성공");
+	}
+	
+	@PutMapping("/{id}")
+	public void updateUser(@PathVariable int id, @RequestBody UserDto user) {
+		
+		System.out.println("회원정보 업데이트 실행");
+		
+		dao.updateUser(user);
+		
+		
+	}
 	
 
 }
