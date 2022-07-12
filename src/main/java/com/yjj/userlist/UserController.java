@@ -27,10 +27,10 @@ public class UserController {
 	@GetMapping
 	public ArrayList<UserDto> userList() {
 		
-		System.out.println(dao.userList());
+		System.out.println(dao.userlist());
 		System.out.println("회원리스트 출력 성공");
 				
-		return dao.userList();		
+		return dao.userlist();		
 	}
 	
 	@PostMapping
